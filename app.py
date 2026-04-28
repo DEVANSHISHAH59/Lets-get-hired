@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 from datetime import date, datetime
 import json, os, re, requests, feedparser
 
-# ── CONFIG ────────────────────────────────────────────────────────────────────
+# – CONFIG ––––––––––––––––––––––––––––––––––
 
 st.set_page_config(
 page_title=“Let’s Get Hired 🚀”,
@@ -13,7 +13,7 @@ layout=“wide”,
 initial_sidebar_state=“expanded”,
 )
 
-# ── STYLES ────────────────────────────────────────────────────────────────────
+# – STYLES ––––––––––––––––––––––––––––––––––
 
 st.markdown(”””
 
@@ -190,7 +190,7 @@ hr { border: none; border-top: 1px solid #2d1063; margin: 1rem 0; }
 
 “””, unsafe_allow_html=True)
 
-# ── DATA ──────────────────────────────────────────────────────────────────────
+# – DATA –––––––––––––––––––––––––––––––––––
 
 DATA_FILE = “/content/jobs_data.json” if not os.path.exists(**file**) else os.path.join(os.path.dirname(os.path.abspath(**file**)), “jobs_data.json”)
 
@@ -200,126 +200,126 @@ DEFAULT_CV = {
 “summary”: “Trust & Safety AI Analyst with 3+ years in LLM evaluation, content safety, abuse detection, and product policy. MSc Business Analytics (Dublin Business School). CSPO certified. Experienced sole market owner driving data-informed policy decisions at scale across 4 markets.”,
 “skills”: “LLM Evaluation · Trust & Safety · Content Policy · SQL · Python/Pandas · Data Visualisation · Stakeholder Management · Agile / CSPO · EU AI Act · Abuse Detection · Product Analytics”,
 “experience”: [
-{“title”:“Trust & Safety AI Analyst”,“company”:“Meta (via Covalen Solutions)”,“dates”:“2022 – 2025”,
+{“title”:“Trust & Safety AI Analyst”,“company”:“Meta (via Covalen Solutions)”,“dates”:“2022 - 2025”,
 “bullets”:”• Sole market owner for regional content safety assessments across 4 markets\n• LLM evaluation, spam, malware, and ID verification abuse detection\n• Built data visualisation dashboards for policy reporting\n• Supported international markets with policy enforcement decisions\n• Collaborated with cross-functional teams on product safety improvements”},
-{“title”:“Business Analyst”,“company”:“Sunrise Enterprise”,“dates”:“2020 – 2022”,
+{“title”:“Business Analyst”,“company”:“Sunrise Enterprise”,“dates”:“2020 - 2022”,
 “bullets”:”• HRM software implementation and requirements gathering\n• Stakeholder workshops and process documentation\n• Delivered business requirement documents and user stories”},
 ],
-“education”: “MSc Business Analytics — Dublin Business School\nCSPO Certification — Scrum Alliance\nIIT Roorkee PM Certification (in progress)”,
+“education”: “MSc Business Analytics - Dublin Business School\nCSPO Certification - Scrum Alliance\nIIT Roorkee PM Certification (in progress)”,
 }
 
 REAL_JOBS = [
-# ── OpenAI ────────────────────────────────────────────────────────────────
-{“title”:“Trust & Safety Operations Analyst”,“company”:“OpenAI”,“role”:“ts”,“source”:“OpenAI Careers”,“salary”:“€65–85k”,“posted”:“Active now”,“age”:0,“hot”:True,
+# – OpenAI ––––––––––––––––––––––––––––––––
+{“title”:“Trust & Safety Operations Analyst”,“company”:“OpenAI”,“role”:“ts”,“source”:“OpenAI Careers”,“salary”:“€65-85k”,“posted”:“Active now”,“age”:0,“hot”:True,
 “url”:“https://openai.com/careers/trust-and-safety-operations-analyst-2/”,
 “desc”:“Own high-sensitivity T&S workflows. GDPR, DSA, EU AI Act. Hybrid 3 days Dublin office. Content integrity, fraud, privacy compliance.”},
-{“title”:“Regulatory Operations Analyst”,“company”:“OpenAI”,“role”:“ts”,“source”:“OpenAI Careers”,“salary”:“€60–80k”,“posted”:“Active now”,“age”:0,“hot”:True,
+{“title”:“Regulatory Operations Analyst”,“company”:“OpenAI”,“role”:“ts”,“source”:“OpenAI Careers”,“salary”:“€60-80k”,“posted”:“Active now”,“age”:0,“hot”:True,
 “url”:“https://openai.com/careers”,
 “desc”:“Privacy rights requests, IP complaints, audit escalations. Global regulatory compliance frameworks.”},
-# ── TikTok ────────────────────────────────────────────────────────────────
-{“title”:“Reporting & Insights Analyst — Account & Youth Safety”,“company”:“TikTok”,“role”:“da”,“source”:“TikTok Careers”,“salary”:“€44–50k”,“posted”:“7 days ago”,“age”:7,“hot”:True,
+# – TikTok ––––––––––––––––––––––––––––––––
+{“title”:“Reporting & Insights Analyst - Account & Youth Safety”,“company”:“TikTok”,“role”:“da”,“source”:“TikTok Careers”,“salary”:“€44-50k”,“posted”:“7 days ago”,“age”:7,“hot”:True,
 “url”:“https://careers.tiktok.com/position?location=CT_211&query=analyst”,
 “desc”:“Analytics for Trust & Safety. Build diagnostic frameworks and safety reports. Dublin.”},
-{“title”:“Policy Analyst, Search — Trust & Safety”,“company”:“TikTok”,“role”:“ts”,“source”:“TikTok Careers”,“salary”:“€40–55k”,“posted”:“13 days ago”,“age”:13,“hot”:False,
+{“title”:“Policy Analyst, Search - Trust & Safety”,“company”:“TikTok”,“role”:“ts”,“source”:“TikTok Careers”,“salary”:“€40-55k”,“posted”:“13 days ago”,“age”:13,“hot”:False,
 “url”:“https://careers.tiktok.com/position?location=CT_211&query=policy+analyst”,
 “desc”:“Improve content moderation accuracy. Deep dives into policy operability. Dublin.”},
-{“title”:“Senior Analyst, Account Risk Management EMEA”,“company”:“TikTok”,“role”:“ts”,“source”:“TikTok Careers”,“salary”:“€52–70k”,“posted”:“30+ days ago”,“age”:31,“hot”:False,
+{“title”:“Senior Analyst, Account Risk Management EMEA”,“company”:“TikTok”,“role”:“ts”,“source”:“TikTok Careers”,“salary”:“€52-70k”,“posted”:“30+ days ago”,“age”:31,“hot”:False,
 “url”:“https://careers.tiktok.com/position?location=CT_211&query=trust+safety”,
 “desc”:“Account risk management across EMEA. Trust & Safety team. Dublin.”},
-{“title”:“Threat Disruptions Analyst, Trust & Safety EMEA”,“company”:“TikTok”,“role”:“ts”,“source”:“TikTok Careers”,“salary”:“€38–75k”,“posted”:“30+ days ago”,“age”:31,“hot”:False,
+{“title”:“Threat Disruptions Analyst, Trust & Safety EMEA”,“company”:“TikTok”,“role”:“ts”,“source”:“TikTok Careers”,“salary”:“€38-75k”,“posted”:“30+ days ago”,“age”:31,“hot”:False,
 “url”:“https://careers.tiktok.com/position?location=CT_211&query=threat”,
 “desc”:“Detect and disrupt coordinated inauthentic behaviour. Dublin.”},
-{“title”:“Business Data Analyst, Video Safety Operations”,“company”:“TikTok”,“role”:“da”,“source”:“TikTok Careers”,“salary”:“€45–60k”,“posted”:“14 days ago”,“age”:14,“hot”:False,
+{“title”:“Business Data Analyst, Video Safety Operations”,“company”:“TikTok”,“role”:“da”,“source”:“TikTok Careers”,“salary”:“€45-60k”,“posted”:“14 days ago”,“age”:14,“hot”:False,
 “url”:“https://careers.tiktok.com/position?location=CT_211&query=data+analyst”,
 “desc”:“VSO Reports & Insights. Data analysis for safety operations. Dublin.”},
-{“title”:“Senior Business Analyst — SMB EMEA”,“company”:“TikTok”,“role”:“ba”,“source”:“TikTok Careers”,“salary”:“€55–75k”,“posted”:“20 days ago”,“age”:20,“hot”:False,
+{“title”:“Senior Business Analyst - SMB EMEA”,“company”:“TikTok”,“role”:“ba”,“source”:“TikTok Careers”,“salary”:“€55-75k”,“posted”:“20 days ago”,“age”:20,“hot”:False,
 “url”:“https://careers.tiktok.com/position?location=CT_211&query=business+analyst”,
 “desc”:“Build sales analytics function for EMEA. Work with sales and product leaders. Dublin.”},
-{“title”:“Model Policy Lead, Video Policy — Trust & Safety”,“company”:“TikTok”,“role”:“ts”,“source”:“TikTok Careers”,“salary”:“€54–64k”,“posted”:“13 days ago”,“age”:13,“hot”:False,
+{“title”:“Model Policy Lead, Video Policy - Trust & Safety”,“company”:“TikTok”,“role”:“ts”,“source”:“TikTok Careers”,“salary”:“€54-64k”,“posted”:“13 days ago”,“age”:13,“hot”:False,
 “url”:“https://careers.tiktok.com/position?location=CT_211&query=policy”,
 “desc”:“Policy leadership for video content moderation. Trust & Safety. Dublin.”},
-{“title”:“Capacity Planning Manager — Data & Analytics, Trust & Safety”,“company”:“TikTok”,“role”:“da”,“source”:“TikTok Careers”,“salary”:“€48–79k”,“posted”:“30+ days ago”,“age”:31,“hot”:False,
+{“title”:“Capacity Planning Manager - Data & Analytics, Trust & Safety”,“company”:“TikTok”,“role”:“da”,“source”:“TikTok Careers”,“salary”:“€48-79k”,“posted”:“30+ days ago”,“age”:31,“hot”:False,
 “url”:“https://careers.tiktok.com/position?location=CT_211&query=data+analytics”,
 “desc”:“Data and analytics for Trust & Safety operations planning. Dublin.”},
-# ── Google / YouTube ──────────────────────────────────────────────────────
-{“title”:“Engineering Analyst, AI Safety”,“company”:“Google”,“role”:“ai”,“source”:“Google Careers”,“salary”:“€65–90k”,“posted”:“Feb 2026”,“age”:60,“hot”:False,
+# – Google / YouTube ——————————————————
+{“title”:“Engineering Analyst, AI Safety”,“company”:“Google”,“role”:“ai”,“source”:“Google Careers”,“salary”:“€65-90k”,“posted”:“Feb 2026”,“age”:60,“hot”:False,
 “url”:“https://careers.google.com/jobs/results/99432678838674118-engineering-analyst/”,
 “desc”:“LLM/generative AI risk mitigation. Work with AI safety teams. Apply the latest advancements in AI to protect from real-world harms.”},
-{“title”:“Analyst, Trust and Safety — Search”,“company”:“Google”,“role”:“ts”,“source”:“Google Careers”,“salary”:“€60–80k”,“posted”:“Recent”,“age”:25,“hot”:False,
+{“title”:“Analyst, Trust and Safety - Search”,“company”:“Google”,“role”:“ts”,“source”:“Google Careers”,“salary”:“€60-80k”,“posted”:“Recent”,“age”:25,“hot”:False,
 “url”:“https://careers.google.com/jobs/results/89521546556515014-analyst/”,
 “desc”:“Protect Search users from abuse, fraud, NCII. Cross-functional with engineers and PMs. Dublin office.”},
-{“title”:“Business Analytics Manager — YouTube Trust & Safety”,“company”:“YouTube / Google”,“role”:“da”,“source”:“Google Careers”,“salary”:“€70–95k”,“posted”:“Recent”,“age”:21,“hot”:False,
+{“title”:“Business Analytics Manager - YouTube Trust & Safety”,“company”:“YouTube / Google”,“role”:“da”,“source”:“Google Careers”,“salary”:“€70-95k”,“posted”:“Recent”,“age”:21,“hot”:False,
 “url”:“https://careers.google.com/jobs/results/?location=Dublin%2C+Ireland&q=trust+safety”,
 “desc”:“Define success metrics for YouTube T&S. Data and analytical techniques. Senior level. Dublin.”},
-{“title”:“Vendor Operations Manager, Trust and Safety”,“company”:“Google”,“role”:“ts”,“source”:“Google Careers”,“salary”:“€65–85k”,“posted”:“14 days ago”,“age”:14,“hot”:False,
+{“title”:“Vendor Operations Manager, Trust and Safety”,“company”:“Google”,“role”:“ts”,“source”:“Google Careers”,“salary”:“€65-85k”,“posted”:“14 days ago”,“age”:14,“hot”:False,
 “url”:“https://careers.google.com/jobs/results/?location=Dublin%2C+Ireland&q=trust+safety”,
 “desc”:“Manage vendor operations for T&S. Drive quality improvement. Dublin.”},
-# ── Meta ──────────────────────────────────────────────────────────────────
-{“title”:“GRO Intelligence Analyst — Trust & Safety”,“company”:“Meta”,“role”:“ts”,“source”:“Meta Careers”,“salary”:“€60–80k”,“posted”:“10 days ago”,“age”:10,“hot”:True,
+# – Meta ——————————————————————
+{“title”:“GRO Intelligence Analyst - Trust & Safety”,“company”:“Meta”,“role”:“ts”,“source”:“Meta Careers”,“salary”:“€60-80k”,“posted”:“10 days ago”,“age”:10,“hot”:True,
 “url”:“https://www.metacareers.com/jobs?offices=Dublin&q=trust+integrity”,
 “desc”:“Prepare intelligence reports. Sensitive content handling. High-risk integrity recommendations. Dublin.”},
-{“title”:“Privacy & Policy Analyst”,“company”:“Meta”,“role”:“ts”,“source”:“Meta Careers”,“salary”:“€58–78k”,“posted”:“15 days ago”,“age”:15,“hot”:False,
+{“title”:“Privacy & Policy Analyst”,“company”:“Meta”,“role”:“ts”,“source”:“Meta Careers”,“salary”:“€58-78k”,“posted”:“15 days ago”,“age”:15,“hot”:False,
 “url”:“https://www.metacareers.com/jobs?offices=Dublin&q=policy+analyst”,
 “desc”:“Content policy, regulatory compliance, GDPR, DSA. Dublin office.”},
-{“title”:“Data Analyst — Product Integrity”,“company”:“Meta”,“role”:“da”,“source”:“Meta Careers”,“salary”:“€62–82k”,“posted”:“18 days ago”,“age”:18,“hot”:False,
+{“title”:“Data Analyst - Product Integrity”,“company”:“Meta”,“role”:“da”,“source”:“Meta Careers”,“salary”:“€62-82k”,“posted”:“18 days ago”,“age”:18,“hot”:False,
 “url”:“https://www.metacareers.com/jobs?offices=Dublin&q=data+analyst”,
 “desc”:“Support product integrity with data. SQL, Python. Dublin office.”},
-# ── Accenture ─────────────────────────────────────────────────────────────
-{“title”:“Trust & Safety Associate — AI Content Review”,“company”:“Accenture”,“role”:“ts”,“source”:“Accenture Careers”,“salary”:“€32–42k”,“posted”:“Active now”,“age”:0,“hot”:True,
+# – Accenture ———————————————————––
+{“title”:“Trust & Safety Associate - AI Content Review”,“company”:“Accenture”,“role”:“ts”,“source”:“Accenture Careers”,“salary”:“€32-42k”,“posted”:“Active now”,“age”:0,“hot”:True,
 “url”:“https://www.accenture.com/ie-en/careers/jobsearch?jk=trust+safety&cl=Dublin”,
 “desc”:“Content moderation and policy review for major tech client. Dublin, hybrid available.”},
-{“title”:“Trust & Safety Team Lead”,“company”:“Accenture”,“role”:“ts”,“source”:“Accenture Careers”,“salary”:“€40–55k”,“posted”:“5 days ago”,“age”:5,“hot”:True,
+{“title”:“Trust & Safety Team Lead”,“company”:“Accenture”,“role”:“ts”,“source”:“Accenture Careers”,“salary”:“€40-55k”,“posted”:“5 days ago”,“age”:5,“hot”:True,
 “url”:“https://www.accenture.com/ie-en/careers/jobsearch?jk=trust+safety&cl=Dublin”,
 “desc”:“Lead a team of T&S analysts. Policy enforcement, quality review, training. Dublin.”},
-# ── Consulting ────────────────────────────────────────────────────────────
-{“title”:“Business Analyst — Financial Services Consulting”,“company”:“EY”,“role”:“ba”,“source”:“EY Careers”,“salary”:“€45–60k”,“posted”:“Active now”,“age”:0,“hot”:True,
+# – Consulting ————————————————————
+{“title”:“Business Analyst - Financial Services Consulting”,“company”:“EY”,“role”:“ba”,“source”:“EY Careers”,“salary”:“€45-60k”,“posted”:“Active now”,“age”:0,“hot”:True,
 “url”:“https://www.ey.com/en_ie/careers”,
 “desc”:“FS Technology Consulting. Channels and Mobile. Senior Consultant level. Dublin.”},
-{“title”:“Technology Business Analyst — Big Data & Regulatory Reporting”,“company”:“Deloitte”,“role”:“ba”,“source”:“Deloitte Careers”,“salary”:“€48–65k”,“posted”:“7 days ago”,“age”:7,“hot”:True,
+{“title”:“Technology Business Analyst - Big Data & Regulatory Reporting”,“company”:“Deloitte”,“role”:“ba”,“source”:“Deloitte Careers”,“salary”:“€48-65k”,“posted”:“7 days ago”,“age”:7,“hot”:True,
 “url”:“https://apply.deloitte.com/careers/SearchJobs/analyst?3_56_3=5440”,
 “desc”:“Big Data & Regulatory Reporting. Hybrid. Multinational client. Dublin.”},
-{“title”:“PMO Business Analyst”,“company”:“Davy”,“role”:“ba”,“source”:“Davy Careers”,“salary”:“€50–65k”,“posted”:“5 days ago”,“age”:5,“hot”:False,
+{“title”:“PMO Business Analyst”,“company”:“Davy”,“role”:“ba”,“source”:“Davy Careers”,“salary”:“€50-65k”,“posted”:“5 days ago”,“age”:5,“hot”:False,
 “url”:“https://www.davy.ie/careers”,
 “desc”:“Central Programme Management Office. Project delivery. Dublin.”},
-{“title”:“AI Governance Analyst”,“company”:“Irish Life”,“role”:“ai”,“source”:“IrishJobs.ie”,“salary”:“€55–70k”,“posted”:“6 days ago”,“age”:6,“hot”:True,
+{“title”:“AI Governance Analyst”,“company”:“Irish Life”,“role”:“ai”,“source”:“IrishJobs.ie”,“salary”:“€55-70k”,“posted”:“6 days ago”,“age”:6,“hot”:True,
 “url”:“https://www.irishjobs.ie/Jobs/analyst/in-Dublin”,
 “desc”:“AI governance, risk and compliance. EU AI Act knowledge essential. Dublin.”},
-# ── Fintech / SaaS ────────────────────────────────────────────────────────
-{“title”:“Policy Operations Analyst — Slack”,“company”:“Salesforce / Slack”,“role”:“ts”,“source”:“Salesforce Careers”,“salary”:“€55–70k”,“posted”:“8 days ago”,“age”:8,“hot”:True,
+# – Fintech / SaaS ––––––––––––––––––––––––––––
+{“title”:“Policy Operations Analyst - Slack”,“company”:“Salesforce / Slack”,“role”:“ts”,“source”:“Salesforce Careers”,“salary”:“€55-70k”,“posted”:“8 days ago”,“age”:8,“hot”:True,
 “url”:“https://careers.salesforce.com/en/jobs/?search=analyst&location=Dublin”,
 “desc”:“Manage policy enforcement on Slack. Safeguard conversations. Ethical content use. Dublin.”},
-{“title”:“Risk & Compliance Analyst”,“company”:“Revolut”,“role”:“ba”,“source”:“Revolut Careers”,“salary”:“€50–70k”,“posted”:“10 days ago”,“age”:10,“hot”:False,
+{“title”:“Risk & Compliance Analyst”,“company”:“Revolut”,“role”:“ba”,“source”:“Revolut Careers”,“salary”:“€50-70k”,“posted”:“10 days ago”,“age”:10,“hot”:False,
 “url”:“https://www.revolut.com/careers/?department=all&location=Dublin”,
 “desc”:“Risk analysis, compliance monitoring. Fast-growing fintech. Dublin office.”},
-{“title”:“Product Analyst — Go-to-Market”,“company”:“HubSpot”,“role”:“po”,“source”:“HubSpot Careers”,“salary”:“€55–75k”,“posted”:“12 days ago”,“age”:12,“hot”:False,
+{“title”:“Product Analyst - Go-to-Market”,“company”:“HubSpot”,“role”:“po”,“source”:“HubSpot Careers”,“salary”:“€55-75k”,“posted”:“12 days ago”,“age”:12,“hot”:False,
 “url”:“https://www.hubspot.com/careers/jobs?q=analyst&countryCodes=IE”,
 “desc”:“Product strategy with deep analytics. Dublin. Cross-functional with product and sales.”},
-{“title”:“Data & Analytics Analyst”,“company”:“AIB”,“role”:“da”,“source”:“AIB Careers”,“salary”:“€45–60k”,“posted”:“9 days ago”,“age”:9,“hot”:False,
+{“title”:“Data & Analytics Analyst”,“company”:“AIB”,“role”:“da”,“source”:“AIB Careers”,“salary”:“€45-60k”,“posted”:“9 days ago”,“age”:9,“hot”:False,
 “url”:“https://aib.ie/careers”,
 “desc”:“Data analytics for financial products. SQL, Python, BI tools. Dublin.”},
-{“title”:“Product Owner — Digital Banking”,“company”:“Bank of Ireland”,“role”:“po”,“source”:“Bank of Ireland Careers”,“salary”:“€60–80k”,“posted”:“4 days ago”,“age”:4,“hot”:True,
+{“title”:“Product Owner - Digital Banking”,“company”:“Bank of Ireland”,“role”:“po”,“source”:“Bank of Ireland Careers”,“salary”:“€60-80k”,“posted”:“4 days ago”,“age”:4,“hot”:True,
 “url”:“https://careers.bankofireland.com”,
 “desc”:“Agile product owner. Digital banking transformation. CSPO preferred. Dublin.”},
-{“title”:“Senior Data Analyst — Risk”,“company”:“Stripe”,“role”:“da”,“source”:“Stripe Careers”,“salary”:“€65–85k”,“posted”:“Recent”,“age”:20,“hot”:False,
+{“title”:“Senior Data Analyst - Risk”,“company”:“Stripe”,“role”:“da”,“source”:“Stripe Careers”,“salary”:“€65-85k”,“posted”:“Recent”,“age”:20,“hot”:False,
 “url”:“https://stripe.com/jobs/search?l=Dublin&q=data+analyst”,
 “desc”:“Data analysis for risk and compliance. SQL, Python. Dublin office.”},
-{“title”:“Product Owner — Trust Platform”,“company”:“Anthropic”,“role”:“po”,“source”:“Anthropic Careers”,“salary”:“€70–95k”,“posted”:“Recent”,“age”:15,“hot”:False,
+{“title”:“Product Owner - Trust Platform”,“company”:“Anthropic”,“role”:“po”,“source”:“Anthropic Careers”,“salary”:“€70-95k”,“posted”:“Recent”,“age”:15,“hot”:False,
 “url”:“https://www.anthropic.com/careers”,
 “desc”:“Product ownership for trust and safety platform. AI safety background preferred. Dublin / Remote.”},
 ]
 
 SILICON_REPUBLIC_ITEMS = [
-{“type”:“job”,“title”:“Trust & Safety Operations Analyst — OpenAI, Dublin (Hybrid)”,“url”:“https://openai.com/careers/trust-and-safety-operations-analyst-2/”,“date”:“Active”,“company”:“OpenAI”},
-{“type”:“job”,“title”:“Reporting & Insights Analyst, Youth Safety — TikTok, Dublin”,“url”:“https://careers.tiktok.com/position?location=CT_211”,“date”:“7 days ago”,“company”:“TikTok”},
-{“type”:“job”,“title”:“Engineering Analyst, AI Safety — Google, Dublin”,“url”:“https://careers.google.com/jobs/results/99432678838674118-engineering-analyst/”,“date”:“Feb 2026”,“company”:“Google”},
-{“type”:“job”,“title”:“GRO Intelligence Analyst — Meta, Dublin”,“url”:“https://www.metacareers.com/jobs?offices=Dublin”,“date”:“10 days ago”,“company”:“Meta”},
-{“type”:“job”,“title”:“Business Analyst – Financial Services — EY, Dublin”,“url”:“https://www.ey.com/en_ie/careers”,“date”:“Active”,“company”:“EY”},
-{“type”:“job”,“title”:“AI Governance Analyst — Irish Life, Dublin”,“url”:“https://www.irishjobs.ie”,“date”:“6 days ago”,“company”:“Irish Life”},
+{“type”:“job”,“title”:“Trust & Safety Operations Analyst - OpenAI, Dublin (Hybrid)”,“url”:“https://openai.com/careers/trust-and-safety-operations-analyst-2/”,“date”:“Active”,“company”:“OpenAI”},
+{“type”:“job”,“title”:“Reporting & Insights Analyst, Youth Safety - TikTok, Dublin”,“url”:“https://careers.tiktok.com/position?location=CT_211”,“date”:“7 days ago”,“company”:“TikTok”},
+{“type”:“job”,“title”:“Engineering Analyst, AI Safety - Google, Dublin”,“url”:“https://careers.google.com/jobs/results/99432678838674118-engineering-analyst/”,“date”:“Feb 2026”,“company”:“Google”},
+{“type”:“job”,“title”:“GRO Intelligence Analyst - Meta, Dublin”,“url”:“https://www.metacareers.com/jobs?offices=Dublin”,“date”:“10 days ago”,“company”:“Meta”},
+{“type”:“job”,“title”:“Business Analyst - Financial Services - EY, Dublin”,“url”:“https://www.ey.com/en_ie/careers”,“date”:“Active”,“company”:“EY”},
+{“type”:“job”,“title”:“AI Governance Analyst - Irish Life, Dublin”,“url”:“https://www.irishjobs.ie”,“date”:“6 days ago”,“company”:“Irish Life”},
 {“type”:“news”,“title”:“Ireland ranked top European hub for trust & safety roles as Big Tech expands Dublin headcount”,“url”:“https://www.siliconrepublic.com/companies”,“date”:“This week”},
 {“type”:“news”,“title”:“EU AI Act enforcement begins: what it means for Dublin tech workers in 2026”,“url”:“https://www.siliconrepublic.com/machines”,“date”:“This week”},
 {“type”:“news”,“title”:“OpenAI doubles Dublin Trust & Safety team to support EMEA operations”,“url”:“https://www.siliconrepublic.com/companies”,“date”:“Last week”},
 {“type”:“news”,“title”:“TikTok Dublin to hire 200+ across Trust & Safety and Analytics in 2026”,“url”:“https://www.siliconrepublic.com/companies”,“date”:“Last week”},
-{“type”:“news”,“title”:“Google’s AI Safety team in Dublin expands — new analyst roles open”,“url”:“https://www.siliconrepublic.com/machines”,“date”:“2 weeks ago”},
+{“type”:“news”,“title”:“Google’s AI Safety team in Dublin expands - new analyst roles open”,“url”:“https://www.siliconrepublic.com/machines”,“date”:“2 weeks ago”},
 {“type”:“news”,“title”:“Data analyst roles surge 40% in Dublin as multinationals scale analytics teams”,“url”:“https://www.siliconrepublic.com/data-science”,“date”:“2 weeks ago”},
 ]
 
@@ -366,7 +366,7 @@ ROLES    = [“All”,“Trust & Safety”,“AI Analyst”,“Data Analyst”,�
 ROLE_MAP = {“ts”:“Trust & Safety”,“ai”:“AI Analyst”,“da”:“Data Analyst”,“po”:“Product Owner”,“ba”:“Business Analyst”}
 STATUS_COLORS = {“Saved”:”#7c3aed”,“Applied”:”#2563eb”,“Interviewing”:”#d97706”,“Offer”:”#16a34a”,“Rejected”:”#dc2626”,“Ghosted”:”#6b7280”}
 
-# ── Persistence ───────────────────────────────────────────────────────────────
+# – Persistence —————————————————————
 
 def load_data():
 if os.path.exists(DATA_FILE):
@@ -391,7 +391,7 @@ st.session_state.last_fetch = None
 
 DATA = st.session_state.data
 
-# ── RSS fetch ─────────────────────────────────────────────────────────────────
+# – RSS fetch —————————————————————–
 
 KEYWORDS = {
 “Trust & Safety”: [“trust and safety”,“trust & safety”,“content moderation”,“integrity analyst”,“policy analyst”,“abuse detection”,“content policy”,“safety analyst”],
@@ -433,7 +433,7 @@ if score >= 25:
 jobs.append({
 “title”: title, “company”: e.get(“author”, “”),
 “role”: role, “source”: src,
-“salary”: “—”, “posted”: e.get(“published”, “”)[:16],
+“salary”: “-”, “posted”: e.get(“published”, “”)[:16],
 “age”: 1, “hot”: True, “url”: e.get(“link”, “”),
 “desc”: desc[:180],
 })
@@ -441,7 +441,7 @@ except Exception:
 pass
 return sorted(jobs, key=lambda x: x.get(“age”, 99))
 
-# ── Google Sheets ─────────────────────────────────────────────────────────────
+# – Google Sheets ———————————————————––
 
 def get_sheets_client():
 try:
@@ -487,7 +487,7 @@ return apps, None
 except Exception as e:
 return None, str(e)
 
-# ── SIDEBAR ───────────────────────────────────────────────────────────────────
+# – SIDEBAR —————————————————————––
 
 with st.sidebar:
 st.markdown(”## 🚀 Let’s Get Hired”)
@@ -524,7 +524,7 @@ st.markdown("💼 [LinkedIn Jobs Dublin](https://www.linkedin.com/jobs/search/?k
 st.markdown("🔍 [Indeed Ireland](https://ie.indeed.com/jobs?q=analyst&l=Dublin&fromage=1)")
 st.markdown("🇮🇪 [IrishJobs.ie](https://www.irishjobs.ie)")
 st.markdown("🟣 [Otta Dublin](https://otta.com/jobs/search?location=Dublin)")
-st.markdown("📋 [Subscribe — Silicon Republic Newsletter](https://www.siliconrepublic.com/newsletter)")
+st.markdown("📋 [Subscribe - Silicon Republic Newsletter](https://www.siliconrepublic.com/newsletter)")
 
 st.markdown("---")
 st.markdown("**Target roles**")
@@ -532,7 +532,7 @@ for r in ["Trust & Safety","AI Analyst","Data Analyst","Product Owner","Business
     st.markdown(f"• {r}")
 ```
 
-# ── helper ────────────────────────────────────────────────────────────────────
+# – helper ––––––––––––––––––––––––––––––––––
 
 def role_chip(role):
 m = {“Trust & Safety”:“c-ts”,“AI Analyst”:“c-ai”,“Data Analyst”:“c-da”,
@@ -577,7 +577,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 col1, col2 = st.columns([1.2, 1])
 
 with col1:
-    st.markdown("#### 🔥 Hot jobs right now — Dublin")
+    st.markdown("#### 🔥 Hot jobs right now - Dublin")
     hot = [j for j in REAL_JOBS if j["hot"]][:6]
     for j in hot:
         role = ROLE_MAP.get(j["role"], j["role"])
@@ -613,24 +613,24 @@ with col2:
 
         st.markdown("#### 🕐 Recent applications")
         for a in sorted(apps, key=lambda x: x.get("date",""), reverse=True)[:4]:
-            role = a.get("role","—")
+            role = a.get("role","-")
             st.markdown(f"""
             <div class="job-card" style="padding:8px 11px">
               <div style="display:flex;justify-content:space-between">
-                <strong style="font-size:12px">{a.get('title','—')}</strong>
+                <strong style="font-size:12px">{a.get('title','-')}</strong>
                 {status_chip(a.get('status','Saved'))}
               </div>
-              <div style="font-size:11px;color:#a78bfa;margin-top:2px">{a.get('company','—')} · {a.get('date','—')}</div>
+              <div style="font-size:11px;color:#a78bfa;margin-top:2px">{a.get('company','-')} · {a.get('date','-')}</div>
             </div>""", unsafe_allow_html=True)
     else:
         st.markdown("#### 🔗 Quick search links")
         for label, url in [
-            ("LinkedIn — Trust & Safety Dublin (today)", "https://www.linkedin.com/jobs/search/?keywords=trust+safety+analyst&location=Dublin&f_TPR=r86400"),
-            ("LinkedIn — AI Analyst Dublin (today)",     "https://www.linkedin.com/jobs/search/?keywords=AI+analyst+LLM&location=Dublin&f_TPR=r86400"),
-            ("Indeed — Business Analyst Dublin",          "https://ie.indeed.com/jobs?q=business+analyst&l=Dublin&fromage=1&sort=date"),
-            ("IrishJobs — Analyst roles",                 "https://www.irishjobs.ie/Jobs/analyst/in-Dublin"),
-            ("Otta — Dublin tech",                        "https://otta.com/jobs/search?location=Dublin&keywords=analyst"),
-            ("Glassdoor — T&S Dublin",                    "https://www.glassdoor.ie/Job/dublin-trust-and-safety-jobs-SRCH_IL.0,6_IC2382967_KO7,23.htm"),
+            ("LinkedIn - Trust & Safety Dublin (today)", "https://www.linkedin.com/jobs/search/?keywords=trust+safety+analyst&location=Dublin&f_TPR=r86400"),
+            ("LinkedIn - AI Analyst Dublin (today)",     "https://www.linkedin.com/jobs/search/?keywords=AI+analyst+LLM&location=Dublin&f_TPR=r86400"),
+            ("Indeed - Business Analyst Dublin",          "https://ie.indeed.com/jobs?q=business+analyst&l=Dublin&fromage=1&sort=date"),
+            ("IrishJobs - Analyst roles",                 "https://www.irishjobs.ie/Jobs/analyst/in-Dublin"),
+            ("Otta - Dublin tech",                        "https://otta.com/jobs/search?location=Dublin&keywords=analyst"),
+            ("Glassdoor - T&S Dublin",                    "https://www.glassdoor.ie/Job/dublin-trust-and-safety-jobs-SRCH_IL.0,6_IC2382967_KO7,23.htm"),
             ("Silicon Republic Jobs",                     "https://www.siliconrepublic.com/jobs"),
         ]:
             st.markdown(f"↗ [{label}]({url})")
@@ -643,7 +643,7 @@ with col2:
 # ══════════════════════════════════════════════════════════════════════════════
 
 elif “Live Job” in page:
-st.markdown(”## 🔴 Live Job Alerts — Dublin 2026”)
+st.markdown(”## 🔴 Live Job Alerts - Dublin 2026”)
 st.markdown(“Real roles sourced from company career pages. Click a role to filter. Posted dates shown.”)
 
 ```
@@ -683,12 +683,12 @@ else:
 for j in jobs:
     role = ROLE_MAP.get(j["role"], j["role"])
     hot = j.get("age", 99) <= 7
-    with st.expander(f"{'🟢 ' if hot else ''}{j['title']} — {j['company']}"):
+    with st.expander(f"{'🟢 ' if hot else ''}{j['title']} - {j['company']}"):
         cc1, cc2, cc3 = st.columns([3,2,1])
         cc1.markdown(f"**{j['title']}**  \n{j['company']} · Dublin")
-        cc2.markdown(f"{role_chip(role)} <span class='sal'>{j.get('salary','—')}</span>", unsafe_allow_html=True)
+        cc2.markdown(f"{role_chip(role)} <span class='sal'>{j.get('salary','-')}</span>", unsafe_allow_html=True)
         cc3.markdown(f"[Open ↗]({j['url']})")
-        st.markdown(f"<div class='posted'>{posted_tag(j.get('age',99), j.get('posted','—'))}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='posted'>{posted_tag(j.get('age',99), j.get('posted','-'))}</div>", unsafe_allow_html=True)
         if j.get("desc"):
             st.markdown(f"<div style='font-size:12px;color:#c4b5fd;margin-top:6px'>{j['desc']}</div>", unsafe_allow_html=True)
         if st.button("+ Add to tracker", key=f"add_{j['title'][:30]}_{j['company']}"):
@@ -713,7 +713,7 @@ for j in jobs:
 
 elif “Silicon” in page:
 st.markdown(”## 📰 Silicon Republic”)
-st.markdown(“Irish tech news and Dublin job posts — your daily pulse.”)
+st.markdown(“Irish tech news and Dublin job posts - your daily pulse.”)
 
 ```
 tab_all, tab_jobs, tab_news = st.tabs(["All", "Jobs", "Tech News"])
@@ -757,7 +757,7 @@ for i, (label, url) in enumerate(links):
 # ══════════════════════════════════════════════════════════════════════════════
 
 elif “Company” in page:
-st.markdown(”## 🏢 Company Career Pages — Dublin”)
+st.markdown(”## 🏢 Company Career Pages - Dublin”)
 st.markdown(“24 major employers with direct career page links.”)
 
 ```
@@ -862,7 +862,7 @@ with st.expander("➕ Log a new application", expanded=False):
     r2c1, r2c2 = st.columns(2)
     with r2c1:
         new_url     = st.text_input("Job URL")
-        new_salary  = st.text_input("Salary", placeholder="e.g. €60–75k")
+        new_salary  = st.text_input("Salary", placeholder="e.g. €60-75k")
     with r2c2:
         new_contact = st.text_input("Contact name", placeholder="Recruiter / hiring manager")
         new_notes   = st.text_area("Notes", height=68, placeholder="Interview dates, follow-ups…")
@@ -904,7 +904,7 @@ if f_r != "All": filtered = [a for a in filtered if a.get("role")==f_r]
 if f_q:          filtered = [a for a in filtered if f_q.lower() in (a.get("title","")+a.get("company","")).lower()]
 
 if not filtered:
-    st.info("No applications match your filter — log one above!")
+    st.info("No applications match your filter - log one above!")
 else:
     st.markdown('<div class="thdr"><span>Role / Company</span><span>Source · Posted</span><span>Applied</span><span>Status</span><span>Role</span><span></span></div>', unsafe_allow_html=True)
     for idx, a in enumerate(filtered):
@@ -912,19 +912,19 @@ else:
         st.markdown(f"""
         <div class="trow">
           <div>
-            <strong style="font-size:12px">{a.get('title','—')}</strong><br>
-            <span style="color:#a78bfa;font-size:11px">{a.get('company','—')}</span>
+            <strong style="font-size:12px">{a.get('title','-')}</strong><br>
+            <span style="color:#a78bfa;font-size:11px">{a.get('company','-')}</span>
             {f'<span class="sal">{a["salary"]}</span>' if a.get("salary") else ''}
           </div>
-          <div style="font-size:11px;color:#c4b5fd">{a.get('source','—')}{posted_str}</div>
-          <div style="font-size:11px">{a.get('date','—')}</div>
+          <div style="font-size:11px;color:#c4b5fd">{a.get('source','-')}{posted_str}</div>
+          <div style="font-size:11px">{a.get('date','-')}</div>
           <div>{status_chip(a.get('status','Saved'))}</div>
-          <div>{role_chip(a.get('role','—'))}</div>
+          <div>{role_chip(a.get('role','-'))}</div>
           <div></div>
         </div>""", unsafe_allow_html=True)
 
         if a.get("notes") or a.get("contact") or a.get("url"):
-            with st.expander(f"📝 {a.get('title','')} — notes"):
+            with st.expander(f"📝 {a.get('title','')} - notes"):
                 if a.get("contact"): st.markdown(f"👤 **Contact:** {a['contact']}")
                 if a.get("notes"):   st.markdown(a["notes"])
                 if a.get("url"):     st.markdown(f"[Open job posting ↗]({a['url']})")
@@ -967,21 +967,21 @@ with st.expander("📋 Setup instructions (one time)", expanded=True):
     st.markdown("""
 ```
 
-**Step 1** — [console.cloud.google.com](https://console.cloud.google.com) → Create project → Enable **Google Sheets API** + **Google Drive API**
+**Step 1** - [console.cloud.google.com](https://console.cloud.google.com) → Create project → Enable **Google Sheets API** + **Google Drive API**
 
-**Step 2** — IAM & Admin → Service Accounts → Create → Download JSON key
+**Step 2** - IAM & Admin → Service Accounts → Create → Download JSON key
 
-**Step 3** — Rename it `gsheets_credentials.json` → place it in your app folder
+**Step 3** - Rename it `gsheets_credentials.json` → place it in your app folder
 
-**Step 4** — Create a Google Sheet named **“Let’s Get Hired”** → share it with the service account email (Editor access)
+**Step 4** - Create a Google Sheet named **“Let’s Get Hired”** → share it with the service account email (Editor access)
 
-**Step 5** — Sync below!
+**Step 5** - Sync below!
 “””)
 
 ```
 creds_ok = os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "gsheets_credentials.json"))
 if creds_ok: st.success("✅ Credentials found!")
-else: st.warning("⚠️ `gsheets_credentials.json` not found — follow setup above.")
+else: st.warning("⚠️ `gsheets_credentials.json` not found - follow setup above.")
 
 sheet_name = st.text_input("Sheet name", value="Let's Get Hired")
 cp, pull = st.columns(2)
@@ -1026,7 +1026,7 @@ if DATA["applications"]:
 
 elif “CV” in page:
 st.markdown(”## 📄 CV Editor”)
-st.markdown(“Edit on the left — live preview on the right.”)
+st.markdown(“Edit on the left - live preview on the right.”)
 
 ```
 cv = DATA["cv"]
@@ -1042,7 +1042,7 @@ with col_edit:
     st.markdown("**Experience**")
     exps = cv.get("experience",[])
     for i, exp in enumerate(exps):
-        with st.expander(f"Role {i+1}: {exp.get('title','—')}", expanded=(i==0)):
+        with st.expander(f"Role {i+1}: {exp.get('title','-')}", expanded=(i==0)):
             exps[i]["title"]   = st.text_input("Title",   value=exp.get("title",""),   key=f"t{i}")
             exps[i]["company"] = st.text_input("Company", value=exp.get("company",""), key=f"c{i}")
             exps[i]["dates"]   = st.text_input("Dates",   value=exp.get("dates",""),   key=f"d{i}")
@@ -1067,7 +1067,7 @@ with col_prev:
     for exp in cv.get("experience",[]):
         bullets = "".join(f"<div style='margin:2px 0'>{b}</div>" for b in exp.get("bullets","").split("\n") if b.strip())
         exp_html += f"""<div style='margin-bottom:10px'>
-            <div style='font-weight:600;font-size:12px'>{exp.get('title','')} — {exp.get('company','')}</div>
+            <div style='font-weight:600;font-size:12px'>{exp.get('title','')} - {exp.get('company','')}</div>
             <div style='font-size:10px;color:#888;margin-bottom:3px'>{exp.get('dates','')}</div>
             <div style='font-size:11px'>{bullets}</div></div>"""
     st.markdown(f"""
@@ -1084,7 +1084,7 @@ with col_prev:
     </div>""", unsafe_allow_html=True)
 
     plain = f"{cv.get('name','')}\n{cv.get('contact','')}\n\nSUMMARY\n{cv.get('summary','')}\n\nSKILLS\n{cv.get('skills','')}\n\nEXPERIENCE\n"
-    plain += "\n\n".join(f"{e.get('title','')} — {e.get('company','')} ({e.get('dates','')})\n{e.get('bullets','')}" for e in cv.get("experience",[]))
+    plain += "\n\n".join(f"{e.get('title','')} - {e.get('company','')} ({e.get('dates','')})\n{e.get('bullets','')}" for e in cv.get("experience",[]))
     plain += f"\n\nEDUCATION\n{cv.get('education','')}"
     st.download_button("📥 Download CV (.txt)", plain, "devanshi_cv.txt", "text/plain", use_container_width=True)
 ```
@@ -1104,27 +1104,27 @@ company_tabs = st.tabs(["OpenAI","TikTok","Google","Meta","General T&S"])
 
 openai_q = [
     ("Tell me about yourself", "3+ years Trust & Safety at Meta via Covalen. Sole market owner. LLM evaluation, abuse detection, content policy. MSc Business Analytics. CSPO. Now seeking a permanent senior T&S role at an AI-first company like OpenAI."),
-    ("Why OpenAI?", "Your T&S team is building safety infrastructure for the most consequential AI of our time. My LLM evaluation and content policy background maps directly — I understand both the technical side (how models fail) and the operational side (how to scale enforcement)."),
-    ("Describe a complex T&S case you owned end to end", "Use the coordinated account network investigation — SQL analysis to identify signal, cross-team escalation, policy recommendation, enforcement action. Quantify the outcome."),
-    ("How do you handle exposure to harmful content?", "Structured processing time, clear workflow compartmentalisation, team debriefs, and proactive wellbeing check-ins. Aware of vicarious trauma risk — I've operated in 24/7 environments."),
-    ("What do you know about DSA/EU AI Act?", "DSA requires platforms to publish transparency reports, conduct risk assessments for VLOPs, and respond to regulator requests. EU AI Act classifies AI systems by risk — high-risk systems need conformity assessments. OpenAI's ChatGPT is a GPAI model under Article 51."),
+    ("Why OpenAI?", "Your T&S team is building safety infrastructure for the most consequential AI of our time. My LLM evaluation and content policy background maps directly - I understand both the technical side (how models fail) and the operational side (how to scale enforcement)."),
+    ("Describe a complex T&S case you owned end to end", "Use the coordinated account network investigation - SQL analysis to identify signal, cross-team escalation, policy recommendation, enforcement action. Quantify the outcome."),
+    ("How do you handle exposure to harmful content?", "Structured processing time, clear workflow compartmentalisation, team debriefs, and proactive wellbeing check-ins. Aware of vicarious trauma risk - I've operated in 24/7 environments."),
+    ("What do you know about DSA/EU AI Act?", "DSA requires platforms to publish transparency reports, conduct risk assessments for VLOPs, and respond to regulator requests. EU AI Act classifies AI systems by risk - high-risk systems need conformity assessments. OpenAI's ChatGPT is a GPAI model under Article 51."),
 ]
 
 tiktok_q = [
-    ("Why TikTok?", "TikTok has one of the most complex T&S environments — short-form video at scale, multilingual markets, live content, e-commerce. My EMEA market ownership and LLM evaluation experience is directly applicable."),
+    ("Why TikTok?", "TikTok has one of the most complex T&S environments - short-form video at scale, multilingual markets, live content, e-commerce. My EMEA market ownership and LLM evaluation experience is directly applicable."),
     ("How do you analyse safety data at scale?", "SQL for pattern detection, Python/Pandas for trend analysis, BI dashboards for stakeholder reporting. At Meta I built dashboards that tracked policy enforcement metrics across 4 markets."),
     ("Tell me about a policy you helped improve", "Describe identifying a gap in abuse detection logic through SQL analysis → proposed policy change → cross-functional review → A/B test → rollout. Focus on data-driven decision making."),
 ]
 
 google_q = [
-    ("Tell me about yourself — ADI framing", "Frame yourself as a data analyst who specialises in trust signals. 'I've spent 3+ years using SQL and Python to identify coordinated account networks, abuse patterns, and policy violations at Meta. My work sits at the intersection of data analysis and integrity operations.'"),
+    ("Tell me about yourself - ADI framing", "Frame yourself as a data analyst who specialises in trust signals. 'I've spent 3+ years using SQL and Python to identify coordinated account networks, abuse patterns, and policy violations at Meta. My work sits at the intersection of data analysis and integrity operations.'"),
     ("Walk me through a SQL analysis you did", "Coordinated account detection: GROUP BY device fingerprint, COUNT of accounts, suspicious temporal clustering. Found networks of fake accounts using shared infrastructure. Escalated to policy team."),
     ("How do you measure the impact of T&S work?", "Leading indicators: detection rate, false positive rate, escalation latency. Lagging: repeat violation rate, user harm reports. I built dashboards tracking all of these across markets."),
 ]
 
 meta_q = [
-    ("You've worked for Meta before — what would you do differently?", "Focus more on proactive rather than reactive enforcement. Build better tooling for market owners. Invest in cross-market learning."),
-    ("How do you prioritise across multiple markets?", "Risk-based scoring — severity × volume × regulatory exposure. Highest severity markets get immediate attention. I owned 4 markets and used a triage matrix to allocate effort."),
+    ("You've worked for Meta before - what would you do differently?", "Focus more on proactive rather than reactive enforcement. Build better tooling for market owners. Invest in cross-market learning."),
+    ("How do you prioritise across multiple markets?", "Risk-based scoring - severity × volume × regulatory exposure. Highest severity markets get immediate attention. I owned 4 markets and used a triage matrix to allocate effort."),
 ]
 
 general_q = [
@@ -1152,7 +1152,7 @@ st.markdown("#### 🔑 Your unique selling points")
 st.markdown("""
 ```
 
-- **Rare combination**: LLM evaluation + T&S operations + data analysis — very few people have all three
+- **Rare combination**: LLM evaluation + T&S operations + data analysis - very few people have all three
 - **EMEA market ownership**: experience making autonomous policy decisions for a region
 - **EU AI Act awareness**: directly relevant for OpenAI, Google, TikTok Dublin
 - **MSc Business Analytics**: signals data fluency beyond just operations
