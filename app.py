@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import plotly.graph_objects as go
+# plotly removed
 from datetime import date, datetime
 import json, os, re, requests, feedparser
 
@@ -585,15 +585,7 @@ if "Dashboard" in page:
             st.markdown("#### 📊 Pipeline")
             sc = pd.DataFrame(apps)["status"].value_counts().reset_index()
             sc.columns = ["Status","Count"]
-            fig = go.Figure(go.Pie(
-                labels=sc["Status"], values=sc["Count"],
-                marker_colors=[STATUS_COLORS.get(s,"#888") for s in sc["Status"]],
-                hole=0.6, textfont_size=12, showlegend=True,
-            ))
-            fig.update_layout(margin=dict(t=0,b=0,l=0,r=0), height=260,
-                              paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-                              legend=dict(font=dict(color="#c4b5fd")))
-            st.plotly_chart(fig, use_container_width=True)
+            st.bar_chart(sc.set_index("Status")["Count"], use_container_width=True)
 
             st.markdown("#### 🕐 Recent applications")
             for a in sorted(apps, key=lambda x: x.get("date",""), reverse=True)[:4]:
@@ -1098,7 +1090,3 @@ elif "Interview" in page:
 - **CSPO**: product thinking on top of analyst skills
 - **Multilingual market support**: demonstrates ability to work across cultures and contexts
     """)
-
-
-   
-
