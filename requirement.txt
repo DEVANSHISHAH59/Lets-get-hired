@@ -1,6 +1,2 @@
 streamlit
 pandas
-feedparser
-requests
-gspread
-google-auth
